@@ -18,8 +18,8 @@ public class Main {
 	
 	List<Integer> list = new List<Integer>();
 	list.add(10);
-	list.set(1, 200);
-	System.out.println(list.get(1));
-	System.out.println(list.get(0));
+
+	list.remove(0);
+	list.printContents();
     }
 }

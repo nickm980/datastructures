@@ -8,12 +8,13 @@ public class List<T> implements IList<T> {
     int size;
     
     public List(){
-	this.arr = (T[]) new Object[2];
-	this.size = 2;
+	arr = (T[]) new Object[2];
+	size = 2;
+	printContents();
     }
     
     public int size() {
-	return this.size;
+	return size;
     }
 
     public boolean isEmpty() {
@@ -21,7 +22,7 @@ public class List<T> implements IList<T> {
     }
 
     public boolean contains(Object o) {
-	return this.indexOf(o) != -1;
+	return indexOf(o) != -1;
     }
 
     public void add(T e) {
@@ -35,7 +36,7 @@ public class List<T> implements IList<T> {
     }
 
     public T remove(Object o) {
-	if (!this.contains(o)) {
+	if (!contains(o)) {
 	    return null;
 	}
 	
@@ -59,32 +60,44 @@ public class List<T> implements IList<T> {
 	    newArray[i] = arr[i];
 	}
 	
-	this.arr = (T[]) newArray;
+	arr = (T[]) newArray;
 
 	return element;
     }
 
     public void clear() {
-	this.arr = (T[]) new Object[2];
+	size = 0;
+	arr = (T[]) new Object[2];
     }
 
     public T get(int index) {
-	return this.arr[index];
+	return arr[index];
     }
 
     public void set(int index, T element) {
-	this.arr[index] = element;
+	arr[index] = element;
+	size++;
     }
 
     public void add(int index, T element) {
+	size++;
 	if (index >= arr.length) {
 	    expand();
 	}
-	Object tmpArry[] = new Object[arr.length];
+	
+	Object tmpArray[] = new Object[arr.length];
 	
 	if (arr[index] != null) {
 	    for (int i = 0; i < arr.length; i++) {
-		
+		if (i < index) {
+		    tmpArray[i] = arr[i];
+		}
+		else if (i == index) {
+		    tmpArray[i] = element;
+		}
+		else if (i > index) {
+		    tmpArray[i + 1] = arr[i];
+		}
 	    }
 	}
 	else {
@@ -118,5 +131,15 @@ public class List<T> implements IList<T> {
 	}
 	
 	arr = tempArray;
+    }
+    
+    public void printContents() {
+	System.out.println("----");
+
+	for (T item : arr) {
+	    System.out.println(item);
+	}
+	
+	System.out.println("----");
     }
 }

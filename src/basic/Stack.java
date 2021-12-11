@@ -1,4 +1,7 @@
 package basic;
+
+import java.util.ArrayList;
+
 @SuppressWarnings("unchecked")
 public class Stack<T> {
 
@@ -6,12 +9,12 @@ public class Stack<T> {
     T[] array;
     
     public Stack() {
-	this.array = (T[]) new Object[2];
-	this.size = -1;
+	array = (T[]) new Object[2];
+	size = -1;
     }
     
     public boolean isEmpty() {
-	return this.size < 0;
+	return size < 0;
     }
     
     public void push(T element) {
@@ -28,7 +31,7 @@ public class Stack<T> {
 	if (size < 0) {
 	    throw new StackOverflowError("Not enough elements");
 	}
-	
+		
 	size--;
 
 	T element = array[size + 1];
