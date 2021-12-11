@@ -1,3 +1,4 @@
+package basic;
 @SuppressWarnings("unchecked")
 public class Stack<T> {
 
@@ -39,6 +40,7 @@ public class Stack<T> {
     protected void expand() {
 	T[] tempArray = (T[]) new Object[array.length*2];
 	
+	//intentionally avoided Arrays.copyOf
 	for (int i = 0; i < array.length; i++) {
 	    tempArray[i] = array[i];
 	}

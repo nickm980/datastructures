@@ -1,3 +1,6 @@
+import basic.List;
+import basic.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,6 +14,12 @@ public class Main {
 	stack.push(4);
 	stack.push(5);
 
-	System.out.println(stack.pop());	
+//	System.out.println(stack.pop());	
+	
+	List<Integer> list = new List<Integer>();
+	list.add(10);
+	list.set(1, 200);
+	System.out.println(list.get(1));
+	System.out.println(list.get(0));
     }
 }
